@@ -40,6 +40,13 @@ const Slider: React.FC<Props> = ({ slides }) => {
   return (
     <div>
       {slides.map((el, index) => (
+          /*
+                Not the ideal, ideally but i would need an unique
+                key to hint react that the element is conceptually the same,
+                even though in different order, etc, so React can use the
+                same Host Instance (dom element) and not to re-render the
+                elements from the beginning.
+          /*
         <SlideComponent key={`${index}_${el.title}`} {...el} />
       ))}
     </div>
@@ -68,7 +75,11 @@ The usage would be:
 
 ```
 export default function App() {
-  const slides: Slide[] = [
+    /*
+        useMemo is not really needed here, but in case the App would re-render,
+        no need to redeclare the slides again
+    /*
+  const slides: Slide[] = useMemo(() => [
     {
       title: "Gradients",
       subtitle: "Start, end, angle",
@@ -96,7 +107,7 @@ export default function App() {
       },
       icon: <p> Some icon here </p>
     }
-  ];
+  ], []);
 
   return (
     <div className="App">
