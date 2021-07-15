@@ -44,7 +44,7 @@ const Slider: React.FC<Props> = ({ slides }) => {
                 Not the ideal, ideally but i would need an unique
                 key to hint react that the element is conceptually the same,
                 even though in different order, etc, so React can use the
-                same Host Instance (dom element) and not to re-render the
+                same Host Instance (dom element) and not re-render the
                 elements from the beginning.
           /*
         <SlideComponent key={`${index}_${el.title}`} {...el} />
@@ -77,7 +77,9 @@ The usage would be:
 export default function App() {
     /*
         useMemo is not really needed here, but in case the App would re-render,
-        no need to redeclare the slides again
+        no need to redeclare the slides again.
+        The slides could be Hoisted, if i don't need
+        anything in the React component scope.
     /*
   const slides: Slide[] = useMemo(() => [
     {
