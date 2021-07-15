@@ -28,12 +28,12 @@ interface Props {
 
 const Slider: React.FC<Props> = ({ slides }) => {
   /*
-    Sliding logic goes heree
-    Maybe i would use  react-motion, or a library that would
-    ease the pain of codin the whole javascript logic.
+    Sliding logic goes here.
+    Maybe I would use  react-motion or a library that would
+    ease the pain of coding the whole javascript logic.
 
     If I'd have to use logic, I'd wrap it in a custom hook,
-    so the Slider component is  clean
+    so the Slider component is  clean.
 
   */
 
@@ -41,9 +41,9 @@ const Slider: React.FC<Props> = ({ slides }) => {
     <div>
       {slides.map((el, index) => (
           /*
-                Not the ideal, ideally but i would need an unique
+                Not the ideal, ideally but I would need a unique
                 key to hint react that the element is conceptually the same,
-                even though in different order, etc, so React can use the
+                even though in a different order, etc, so React can use the
                 same Host Instance (dom element) and not re-render the
                 elements from the beginning.
           /*
@@ -78,7 +78,7 @@ export default function App() {
     /*
         useMemo is not really needed here, but in case the App would re-render,
         no need to redeclare the slides again.
-        The slides could be Hoisted, if i don't need
+        The slides could be Hoisted, if I don't need
         anything in the React component scope.
     /*
   const slides: Slide[] = useMemo(() => [
@@ -122,8 +122,7 @@ export default function App() {
 
 Regarding the modularity in the React component, some other ways of building a more modular component would be:
 
-1. Passing a render function, so the coponent is more customizable (Kinda using render-props). I have seen this pattern a lot in React Native (FlatList, etc), and allows the user of this
-   component to customize the UI of the Slider. The slider itself would be responsible for the sliding logic.
+1. Passing a render function, so the component is more customizable (Kinda using render-props). I have seen this pattern a lot in React Native (FlatList, etc), and allows the user of this component to customize the UI of the Slider. The slider itself would be responsible for the sliding logic.
 
 2. Passing an <Ilustration /> component, instead of the gradient.
-   Doing so, the user of the component could be able to pass custom elements (not limited to Gradient with an icon)
+   By Doing so, the user of the component could be able to pass custom elements (not limited to Gradient with an icon)
